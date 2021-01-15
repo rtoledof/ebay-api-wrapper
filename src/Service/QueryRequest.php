@@ -23,19 +23,19 @@ class QueryRequest extends Psr7Request {
 	private string $globalID = Constants::EBAY_GID_US;
 
 	/**
-	 * @var string
+	 * @var null|string
 	 */
-	private string $query;
+	private ?string $query;
 
 	/**
-	 * @var float
+	 * @var null|float
 	 */
-	private float $minPrice;
+	private ?float $minPrice;
 
 	/**
-	 * @var float
+	 * @var null|float
 	 */
-	private float $maxPrice;
+	private ?float $maxPrice;
 
 	/**
 	 * @var string
@@ -105,7 +105,7 @@ class QueryRequest extends Psr7Request {
 	 * @param SfRequest $request
 	 */
 	private function handlerRequest(SfRequest $request) {
-		$this->query         = $request->get('keywords');
+		$this->query         = $request->get('keywords', null);
 		$this->minPrice      = $request->get('price_min', 10);
 		$this->maxPrice      = $request->get('price_max', 10000);
 		$this->entityPerPage = $request->get('per_page', 10);

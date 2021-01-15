@@ -10,7 +10,7 @@ class Service {
 	/**
 	 * @var Client
 	 */
-	private $client;
+	private Client $client;
 
 	public function __construct() {
 		$this->client = new Client(['base_url' => Constants::EBAY_API_URL]);

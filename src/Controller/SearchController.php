@@ -3,8 +3,8 @@
 namespace App\Controller;
 
 use App\Service\Error;
-use App\Service\Response;
 use App\Service\Service;
+use App\Service\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -13,7 +13,7 @@ class SearchController {
 	/**
 	 * @param Request $request
 	 *
-	 * @Route(name="search", path="/search", methods={"GET"})
+	 * @Route(name="search", path="/", methods={"GET"})
 	 * @return JsonResponse
 	 */
 	public function list(Request $request): JsonResponse{

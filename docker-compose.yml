@@ -1,0 +1,21 @@
+version: '2'
+services:
+  php:
+    container_name: vault-php
+    build:
+      context: './'
+      dockerfile: './docker/php/Dockerfile'
+    volumes:
+    - ./:/app
+    working_dir: /app
+  web:
+    image: library/nginx:1.19-alpine
+    container_name: web-server
+    restart: on-failure
+    volumes:
+    - ./:/app
+    - './docker/nginx/api.conf:/etc/nginx/conf.d/api.conf:ro'
+    depends_on:
+       - php
+    ports:
+    - 8089:80

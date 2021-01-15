@@ -61,4 +61,8 @@ Service is the class in charge to create the request, then send the request to e
 
 The folder web contain the index.php that is the one to initialize the whole application process.
 
+### Dependencies used
+
+I used some dependencies from symfony to use the 
+
 

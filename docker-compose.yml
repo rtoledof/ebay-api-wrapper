@@ -1,4 +1,4 @@
-version: '2'
+version: '3.4'
 services:
   php:
     container_name: vault-php
@@ -18,4 +18,4 @@ services:
     depends_on:
        - php
     ports:
-    - 8089:80
+    - 80:80

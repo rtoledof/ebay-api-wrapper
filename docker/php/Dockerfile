@@ -1,4 +1,4 @@
-FROM php:8.0.1-fpm-alpine3.12
+FROM php:7.4-fpm-alpine3.12
 
 RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS \
     && apk add --no-cache mysql-dev \

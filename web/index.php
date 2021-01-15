@@ -8,7 +8,9 @@ use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/../.env');
+if (file_exists(__DIR__.'/../.env')) {
+	$dotenv->load(__DIR__.'/../.env');
+}
 
 $request = Request::createFromGlobals();
 $request->headers->add(['EBAY-API-KEY' => $_ENV['API_KEY']]);

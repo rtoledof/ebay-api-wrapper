@@ -9,8 +9,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 COPY ./ /app
 
-COPY ./.env.dist /app/.env
-
 WORKDIR /app
 
 RUN  cd /app && pwd && composer install \

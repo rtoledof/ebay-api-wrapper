@@ -84,9 +84,9 @@ class Product {
 		$this->link          = $item['viewItemURL'][0];
 		$this->cover         = $item['galleryURL'][0];
 		$this->title         = $item['title'][0];
-		$this->price         = $item['sellingStatus'][0]?->currentPrice[0]?->__value__;
-		$this->currency      = $item['sellingStatus'][0]?->currentPrice[0]?->$currencyTag;
-		$this->shippingPrice = $item['shippingInfo'][0]?->shippingServiceCost[0]?->__value__;
+		$this->price         = $item['sellingStatus'][0]->currentPrice[0]->__value__;
+		$this->currency      = $item['sellingStatus'][0]->currentPrice[0]->$currencyTag;
+		$this->shippingPrice = $item['shippingInfo'][0]->shippingServiceCost[0]->__value__;
 		$this->validUntil    = $item['listingInfo'][0]->endTime[0];
 		$this->brand         = $item['globalId'][0];
 	}

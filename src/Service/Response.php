@@ -30,19 +30,21 @@ class Response extends SfResponse {
 			$data = json_decode($data);
 		}
 		$instance = new self();
-		$instance->status = $data->findItemsAdvancedResponse[0]?->ack[0];
-		if ($data->findItemsAdvancedResponse[0]?->ack[0] === 'Success') {
-			foreach ($data->findItemsAdvancedResponse[0]?->searchResult[0] as $key => $value) {
-				if ($key === '@count' && $value !== 0) {
-					continue;
+		if (isset($data->findItemsAdvancedResponse[0])) {
+			$instance->status = $data->findItemsAdvancedResponse[0]->ack[0];
+			if ($data->findItemsAdvancedResponse[0]->ack[0] === 'Success') {
+				foreach ($data->findItemsAdvancedResponse[0]->searchResult[0] as $key => $value) {
+					if ($key === '@count' && $value !== 0) {
+						continue;
+					}
+					foreach ($value as $item) {
+						$product          = new Product((array) $item);
+						$instance->data[] = $product;
+					}
 				}
-				foreach ($value as $item) {
-					$product          = new Product((array) $item);
-					$instance->data[] = $product;
-				}
+			} else {
+				$instance->error = new Error(SfResponse::HTTP_BAD_REQUEST, $data->findItemsAdvancedResponse[0]->errorMessage[0]->error[0]);
 			}
-		} else {
-			$instance->error = new Error(SfResponse::HTTP_BAD_REQUEST, $data->findItemsAdvancedResponse[0]->errorMessage[0]?->error[0]);
 		}
 		return $instance;
 	}

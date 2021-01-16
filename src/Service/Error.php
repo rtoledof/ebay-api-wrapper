@@ -2,15 +2,13 @@
 
 namespace App\Service;
 
-use JetBrains\PhpStorm\Pure;
-
 class Error extends \Exception {
 	/**
 	 * Error constructor.
 	 * @param int $code
 	 * @param string|\stdClass $message
 	 */
-	public function __construct(int $code, string|\stdClass $message)
+	public function __construct(int $code, $message)
 	{
 		$this->code = $code;
 		if (!is_string($message) && isset($message->parameter[0])) {

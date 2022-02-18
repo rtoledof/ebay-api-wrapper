@@ -1,5 +1,3 @@
-#Compado test case
-
 ## Structure
 
 The project is structure in the following way.
